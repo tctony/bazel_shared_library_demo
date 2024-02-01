@@ -2,4 +2,6 @@
 
 #include <string>
 
-__attribute__((visibility("default"))) std::string get_name();
+#include "export.h"
+
+LIB_EXPORT std::string get_name();

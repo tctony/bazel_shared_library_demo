@@ -1,8 +1,10 @@
 cc_binary(
     name = "main",
-    srcs = ["main.cc"],
-    copts = ["-DLIB_BEING_USED"],
+    srcs = [
+        "main.cc",
+    ],
+    defines = ["LIB_BEING_USED=1"],
     deps = [
-        "//lib:lib_shared",
+        "//lib:lib_shared_wrapper",
     ],
 )

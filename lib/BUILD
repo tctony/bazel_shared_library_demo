@@ -10,14 +10,26 @@ cc_library(
     copts = [
         "-fvisibility=hidden",
         "-fvisibility-inlines-hidden",
-        "-DLIB_IMPLEMENTATION=1",
     ],
+    defines = ["LIB_IMPLEMENTATION=1"],
+    alwayslink = 1,
 )
 
 cc_binary(
     name = "lib_shared",
-    linkshared = True,
+    linkshared = 1,
     deps = [
         ":lib",
+    ],
+)
+
+cc_library(
+    name = "lib_shared_wrapper",
+    srcs = [
+        ":lib_shared",
+    ],
+    hdrs = [
+        "export.h",
+        "lib.h",
     ],
 )
